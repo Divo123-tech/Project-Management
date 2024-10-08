@@ -48,7 +48,7 @@ export interface Task {
   priority?: Priority;
   startDate?: string;
   dueDate?: string;
-  tags?: number;
+  tags?: string;
   points?: number;
   projectId?: number;
   authorUserId?: number;
@@ -79,7 +79,7 @@ export const api = createApi({
       invalidatesTags: ["Projects"],
     }),
     getTasks: build.query<Task[], { projectId: number }>({
-      query: (projectId) => `tasks?projectId=${projectId}`,
+      query: (projectId) => `tasks?projectId=${projectId.projectId}`,
       providesTags: (result) =>
         result
           ? result.map(({ id }) => ({ type: "Tasks" as const, id }))
