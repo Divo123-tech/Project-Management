@@ -11,6 +11,8 @@ const helmet_1 = __importDefault(require("helmet"));
 const project_routes_1 = __importDefault(require("./routes/project.routes"));
 const task_routes_1 = __importDefault(require("./routes/task.routes"));
 const search_routes_1 = __importDefault(require("./routes/search.routes"));
+const users_routes_1 = __importDefault(require("./routes/users.routes"));
+const teams_routes_1 = __importDefault(require("./routes/teams.routes"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
@@ -25,6 +27,8 @@ app.get("/", (req, res) => {
 app.use("/projects", project_routes_1.default);
 app.use("/tasks", task_routes_1.default);
 app.use("/search", search_routes_1.default);
+app.use("/users", users_routes_1.default);
+app.use("/teams", teams_routes_1.default);
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log("Listening on port " + port);
