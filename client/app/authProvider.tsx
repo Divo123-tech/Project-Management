@@ -46,7 +46,7 @@ type Props = {
 };
 const AuthProvider = ({ children }: Props) => {
   return (
-    <div className="mt-5">
+    <div>
       <Authenticator formFields={formFields}>
         {({ user }: any) =>
           user ? <div>{children}</div> : <div>Please Sign In</div>
