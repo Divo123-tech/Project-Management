@@ -10,7 +10,7 @@ type Props = {
   params: { id: string };
 };
 
-const page = ({ params }: Props) => {
+const Project = ({ params }: Props) => {
   const { id } = params;
   const [activeTab, setActiveTab] = useState("Board");
   const [isModalNewTaskOpen, setIsModalNewTaskOpen] = useState(false);
@@ -40,4 +40,4 @@ const page = ({ params }: Props) => {
   );
 };
 
-export default page;
+export default Project;

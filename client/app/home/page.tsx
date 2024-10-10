@@ -97,7 +97,11 @@ const HomePage = () => {
           className="bg-transparent text-xl"
         >
           {projects.map((project) => {
-            return <option value={project.id}>{project.name}</option>;
+            return (
+              <option value={project.id} key={project.id}>
+                {project.name}
+              </option>
+            );
           })}
         </select>
       </div>
