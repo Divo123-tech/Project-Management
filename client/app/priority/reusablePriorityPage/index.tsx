@@ -1,1 +1,1 @@
-export { default } from "./ReusablePriorityPage";
+export { default } from "./reusablePriorityPage";
