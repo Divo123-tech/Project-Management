@@ -22,7 +22,7 @@ import {
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "@/app/redux";
-import { setIsSidebarCollapsed, setIsDarkMode } from "@/state";
+import { setIsSidebarCollapsed } from "@/state";
 import Link from "next/link";
 import { useGetProjectsQuery } from "@/state/api";
 const Sidebar = () => {
@@ -146,24 +146,12 @@ interface SidebarLinkProps {
   href: string;
   icon: LucideIcon;
   label: string;
-  //   isCollapsed: boolean;
 }
 
-const SidebarLink = ({
-  href,
-  icon: Icon,
-  label,
-  //   isCollapsed,
-}: SidebarLinkProps) => {
+const SidebarLink = ({ href, icon: Icon, label }: SidebarLinkProps) => {
   const pathname = usePathname();
   const isActive =
     pathname == href || (pathname == "/" && href == "/dashboard");
-  const screenWidth = window.innerWidth;
-
-  const dispatch = useAppDispatch();
-  const isSidebarCollapsed = useAppSelector(
-    (state) => state.global.isSidebarCollapsed
-  );
 
   return (
     <Link href={href} className="w-full">
@@ -185,6 +173,4 @@ const SidebarLink = ({
 };
 
 export default Sidebar;
-function useAppDispath() {
-  throw new Error("Function not implemented.");
-}
+

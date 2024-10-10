@@ -1,8 +1,6 @@
 "use client";
 import {
   Priority,
-  Project,
-  Status,
   Task,
   useGetProjectsQuery,
   useGetTasksQuery,
