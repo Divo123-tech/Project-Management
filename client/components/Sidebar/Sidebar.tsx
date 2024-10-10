@@ -31,6 +31,10 @@ const Sidebar = () => {
   const [showPriority, setShowPriority] = useState(true);
 
   const { data: projects } = useGetProjectsQuery();
+  const dispatch = useAppDispatch();
+  const isSidebarCollapsed = useAppSelector(
+    (state) => state.global.isSidebarCollapsed
+  );
   const { data: currentUser } = useGetAuthUserQuery({});
 
   const currentUserDetails = currentUser?.userDetails;
@@ -44,10 +48,7 @@ const Sidebar = () => {
       console.error("Error signing out", err);
     }
   };
-  const dispatch = useAppDispatch();
-  const isSidebarCollapsed = useAppSelector(
-    (state) => state.global.isSidebarCollapsed
-  );
+
   const sidebarClassNames = `fixed flex flex-col h-[100%] justify-between shadow-xl transition-all duration-300 h-full z-40 dark:bg-black overflow-y-auto bg-white ${isSidebarCollapsed ? "w-0 hidden" : "w-64"} `;
   return (
     <div className={sidebarClassNames}>
