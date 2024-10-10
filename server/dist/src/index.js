@@ -29,7 +29,7 @@ app.use("/tasks", task_routes_1.default);
 app.use("/search", search_routes_1.default);
 app.use("/users", users_routes_1.default);
 app.use("/teams", teams_routes_1.default);
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
+const port = Number(process.env.PORT) || 3000;
+app.listen(port, "0.0.0.0", () => {
     console.log("Listening on port " + port);
 });
