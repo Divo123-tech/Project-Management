@@ -2,6 +2,7 @@
 import {
   Priority,
   Project,
+  Status,
   Task,
   useGetProjectsQuery,
   useGetTasksQuery,
@@ -55,10 +56,10 @@ const HomePage = () => {
     count: priorityCount[key],
   }));
 
-  const statusCount = projects.reduce(
-    (acc: Record<string, number>, project: Project) => {
-      const status = project.endDate ? "Completed" : "Active";
-      acc[status] = (acc[status] || 0) + 1;
+  const statusCount = tasks.reduce(
+    (acc: Record<string, number>, task: Task) => {
+      const status = task.status;
+      acc[status as string] = (acc[status as string] || 0) + 1;
       return acc;
     },
     {},
@@ -128,7 +129,7 @@ const HomePage = () => {
         </div>
         <div className="rounded-lg bg-white p-4 shadow dark:bg-dark-secondary">
           <h3 className="mb-4 text-lg font-semibold dark:text-white">
-            Project Status
+            Task Status
           </h3>
           <ResponsiveContainer width="100%" height={300}>
             <PieChart>
@@ -157,19 +158,17 @@ const HomePage = () => {
           <h3 className="mb-4 text-lg font-semibold dark:text-white">
             Your Tasks
           </h3>
-          <div style={{ width: "100%", overflowX: "auto" }}>
-            <div style={{ height: 400, width: "100%" }}>
-              <DataGrid
-                rows={tasks}
-                columns={taskColumns}
-                checkboxSelection
-                loading={tasksLoading}
-                getRowClassName={() => "data-row-grid"}
-                getCellClassName={() => "data-grid-cell"}
-                className={dataGridClassNames}
-                sx={dataGridSxStyles(isDarkMode)}
-              />
-            </div>
+          <div style={{ height: 400, width: "100%" }}>
+            <DataGrid
+              rows={tasks}
+              columns={taskColumns}
+              checkboxSelection
+              loading={tasksLoading}
+              getRowClassName={() => "data-row-grid"}
+              getCellClassName={() => "data-grid-cell"}
+              className={dataGridClassNames}
+              sx={dataGridSxStyles(isDarkMode)}
+            />
           </div>
         </div>
       </div>
